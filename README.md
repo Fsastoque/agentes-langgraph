@@ -14,6 +14,7 @@
 * uv init
 ## Instalar dependencias con `uv`
 * uv add langgraph langchain langchain-openai langchain-google-genai
+* uv add langchain-google-vertexai    
 ## Instalar dependencias solo para desarrollo
 * uv add "langgraph-cli[inmem]" --dev
 * uv add ipykernel --dev
