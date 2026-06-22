@@ -2,7 +2,9 @@
   "dependencies": ["."],
   "graphs": {
     "agent": "./src/agents/main.py:agent",
-    "simple": "./src/agents/simple.py:agent"
+    "simple": "./src/agents/simple.py:agent",
+    "rag": "./src/agents/rag.py:agent",
+    "rag_chaining": "./src/agents/rag_chaining.py:agent"
   },
   "env": ".env"
 }
