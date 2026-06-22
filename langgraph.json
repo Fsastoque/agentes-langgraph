@@ -4,12 +4,9 @@
     "agent": "./src/agents/main.py:agent",
     "simple": "./src/agents/simple.py:agent",
     "rag": "./src/agents/rag.py:agent",
-<<<<<<< HEAD
     "rag_chaining": "./src/agents/rag_chaining.py:agent",
-    "support": "./src/agents/support/agent.py:agent"    
-=======
-    "rag_chaining": "./src/agents/rag_chaining.py:agent"
->>>>>>> d930aa0 (se implementa strcuture-output)
+    "support": "./src/agents/support/agent.py:agent",
+    "booking": "./src/agents/support/nodes/booking/node.py:booking_node" 
   },
   "env": ".env"
 }
