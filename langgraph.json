@@ -5,8 +5,12 @@
     "simple": "./src/agents/simple.py:agent",
     "rag": "./src/agents/rag.py:agent",
     "rag_chaining": "./src/agents/rag_chaining.py:agent",
+<<<<<<< HEAD
     "support": "./src/agents/support/agent.py:agent",
     "booking": "./src/agents/support/nodes/booking/node.py:booking_node" 
+=======
+    "support": "./src/agents/support/agent.py:agent"    
+>>>>>>> dc0c9b7 (feat: Add support agent with conversation and extractor nodes, and include jinja2 dependency)
   },
   "env": ".env"
 }

@@ -36,7 +36,7 @@ def extractor(state: State):
     new_state: State = {}
     if customer_name is None or len(history) >= 10:
         schema = llm_with_structured_output.invoke(history)
-        new_state["customer_name"] = schema.name
+        new_state["customer_name"] = schema.name        
         new_state["phone"] = schema.phone
         new_state["my_age"] = schema.age
     return new_state
