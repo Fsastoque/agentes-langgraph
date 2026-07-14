@@ -1,25 +1,20 @@
 from langchain_core.tools import tool
-import requests
 
-@tool("get_products", description="Get the products that the store offers filter by price")
-def get_products():
-    # Connnect with API
-    """Get the products that the store offers"""
-    response = requests.get("https://api.escuelajs.co/api/v1/products")
-    products = response.json()
-    return "".join([f"{product['title']} - {product['price']}" for product in products])
+@tool("book_appointment", description="book a medical appointment for a given date, time, doctor and patient")
+def book_appointment(date: str, time: str, doctor: str, patient: str) -> str:
+    ## TODO: Implement the booking logic
+    return f"Appointment booked for {date} at {time} with {doctor} for {patient}!"
 
-from langchain_core.tools import tool
-import requests
-@tool("get_weather", description="Get the weather of a city")
-def get_weather(city: str):
-    response = requests.get(f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1")
-    data = response.json()
-    latitude = data["results"][0]["latitude"]
-    longitude = data["results"][0]["longitude"]
-    response = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true")
-    data = response.json()
-    response = f"The weather in {city} is {data["current_weather"]["temperature"]}C with {data["current_weather"]["windspeed"]}km/h of wind."
-    return response
+@tool("get_appointment_availability", description="get the availability of a medical appointment for a given date, time and doctor")
+def get_appointment_availability(date: str, time: str, doctor: str) -> str:
+    ## TODO: Implement the availability logic
+    return f"""
+    The availability slots for the {doctor} are:
+    - Monday: 10:00-15:00
+    - Wednesday: 10:00-15:00
+    - Thursday: 10:00-15:00
+    - Friday: 10:00-12:00
+    """
 
-tools = [get_products, get_weather]
+
+tools = [book_appointment, get_appointment_availability]
