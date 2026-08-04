@@ -6,7 +6,10 @@
     "rag": "./src/agents/rag.py:agent",
     "rag_chaining": "./src/agents/rag_chaining.py:agent",
     "support": "./src/agents/support/agent.py:agent",
-    "booking": "./src/agents/support/nodes/booking/node.py:booking_node" 
+    "booking": "./src/agents/support/nodes/booking/node.py:booking_node",
+    "code_review": "./src/agents/code_review.py:agent",
+    "orchestration": "./src/agents/orchestrator.py:agent",
+    "evaluator": "./src/agents/evaluator.py:agent"
   },
   "env": ".env"
 }
