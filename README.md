@@ -24,3 +24,6 @@
 
 ## Instalar proyecto dev
 * uv pip install -e .
+
+## Levantar Docker
+* docker compose up -d

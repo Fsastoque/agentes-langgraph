@@ -20,9 +20,14 @@ def read_root():
 
 @app.post("/chat/{chat_id}")
 async def chat(chat_id: str, item: Message):
+    config = {
+        "configurable": {
+            "thread_id": chat_id,
+        }
+    }
     human_message = HumanMessage(content=item.message)
     state = {"messages": [human_message]}
-    response = agent.invoke(state)
+    response = agent.invoke(state, config)
     last_message = response["messages"][-1]
     return last_message.content
 
