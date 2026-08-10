@@ -5,7 +5,7 @@
     "simple": "./src/agents/simple.py:agent",
     "rag": "./src/agents/rag.py:agent",
     "rag_chaining": "./src/agents/rag_chaining.py:agent",
-    "support": "./src/agents/support/agent.py:agent",
+    "support": "./src/agents/support/agent.py:make_graph",
     "booking": "./src/agents/support/nodes/booking/node.py:booking_node",
     "code_review": "./src/agents/code_review.py:agent",
     "orchestration": "./src/agents/orchestrator.py:agent",

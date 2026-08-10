@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from agents.support.agent import agent
 from langchain_core.messages import HumanMessage
 from fastapi.responses import StreamingResponse
-#from api.db import lifespan, CheckpointerDep
+from api.db import lifespan, CheckpointerDep
 
 app = FastAPI()
 
@@ -19,7 +19,7 @@ def read_root():
     return {"Hello": "World"}
 
 @app.post("/chat/{chat_id}")
-async def chat(chat_id: str, item: Message):
+async def chat(chat_id: str, item: Message, checkpointer: CheckpointerDep):
     config = {
         "configurable": {
             "thread_id": chat_id,
