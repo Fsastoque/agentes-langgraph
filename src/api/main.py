@@ -3,12 +3,12 @@ load_dotenv()
 
 from pydantic import BaseModel
 from fastapi import FastAPI
-from agents.support.agent import agent
+from agents.support.agent import make_graph
 from langchain_core.messages import HumanMessage
 from fastapi.responses import StreamingResponse
 from api.db import lifespan, CheckpointerDep
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 
 
 class Message(BaseModel):
@@ -20,20 +20,24 @@ def read_root():
 
 @app.post("/chat/{chat_id}")
 async def chat(chat_id: str, item: Message, checkpointer: CheckpointerDep):
+     # CRUD add message para persistir el mensaje en la base de datos usando checkpointer
     config = {
         "configurable": {
             "thread_id": chat_id,
         }
     }
     human_message = HumanMessage(content=item.message)
-    state = {"messages": [human_message]}
+    agent = make_graph(config={"checkpointer": checkpointer})
+    state = {"messages": [human_message], "customer_name": "John Dooe"}
     response = agent.invoke(state, config)
     last_message = response["messages"][-1]
+    # CRUD add message para persistir el mensaje en la base de datos usando checkpointer
     return last_message.content
 
 @app.post("/chat/{chat_id}/stream")
-async def stream_chat(chat_id: str, message: Message):
+async def stream_chat(chat_id: str, message: Message, checkpointer: CheckpointerDep):
     human_message = HumanMessage(content=message.message)
+    agent = make_graph(config={"checkpointer": checkpointer})
     async def generate_response():
         #agent = agent(config={"checkpointer": checkpointer})
         for message_chunk, metadata in agent.stream({"messages": [human_message]}, stream_mode="messages"):
